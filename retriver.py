@@ -4,7 +4,15 @@ from langchain.embeddings import SentenceTransformerEmbeddings
 from langchain.prompts import ChatPromptTemplate
 
 from langchain_mistralai.chat_models import ChatMistralAI
-api_key="fRKIFWgC1KjhT6bbsIcMy3j4i8fC6Jz3"
+import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
+
+# Access variables
+api_key = os.getenv("API_KEY")
+
 model = ChatMistralAI(api_key=api_key)
 
 embedding_function = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2")
